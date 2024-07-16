@@ -1,0 +1,7 @@
+{% extends "admin/login.html" %}
+{% load i18n %}
+
+{% block content %}
+  {{ block.super }}
+  <a href="{% url 'password_reset' %}">{% trans 'Mot de passe oublié?' %}</a>
+{% endblock %}

@@ -1,0 +1,28 @@
+{% extends "base_login.html" %}
+{% block header %}
+    <header>
+        <h1>Controle</h1>
+    </header>
+{% endblock %}
+{% block content %}
+<div class="page-container">
+  <div class="login-page">
+    <div class="form">
+      <h2>Se connecter</h2>
+      <form method="post" class="login-form">
+        {% csrf_token %}
+        <p>
+          <label for="{{ form.username.id_for_label }}">{{ form.username.label }}</label>
+          {{ form.username }}
+        </p>
+        <p>
+          <label for="{{ form.password.id_for_label }}">{{ form.password.label }}</label>
+          {{ form.password }}
+        </p>
+        <button type="submit">Se connecter</button>
+        <p><a href="{% url 'password_reset' %}">Mot de passe oublié ?</a></p>
+      </form>
+    </div>
+  </div>
+</div>
+{% endblock %}

@@ -1,0 +1,22 @@
+{% extends "base_generic.html" %}
+
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Mon site</title>
+</head>
+{% block content %}
+    <div class="home">
+        <nav class="nav-links">
+            <a class="link_block1">Accueil</a>
+            {% if user.is_authenticated %}
+                <a class="link_block2" href="{% url 'upload_page' user_id=user.id %}">Ma page de téléchargement</a>
+                {% if user.is_superuser %}
+                    <a class="link_block3" href="{% url 'admin:index' %}">Page d'administration</a>
+                    <a class="link_block4" href="{% url 'user_list' %}">Liste des utilisateurs</a>
+                {% endif %}
+            {% endif %}
+        </nav>
+    </div>
+</html>
+{% endblock %}

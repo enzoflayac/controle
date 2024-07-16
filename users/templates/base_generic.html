@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    {% load static %}
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contrôle course au large</title>
+    <link rel="stylesheet" type="text/css" href="{% static 'users/styles.css' %}">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+    <script src="https://kit.fontawesome.com/b049bf02db.js" crossorigin="anonymous"></script>
+</head>
+<body>
+    <header>
+        <div class="header-images">
+            <div class="header-section">
+                <img class="dhreamcup"src="{% static 'users/images/drheamcup.png' %}" alt="Image 1">
+            </div>
+            <div class="header-section">
+                <img class="ffv"src="{% static 'users/images/ffv.png' %}" alt="Image 2">
+            </div>
+        </div>
+        <div class="header-title">
+            <h1>DRHEAM CUP</h1>
+        </div>
+        <div class="links">
+            <a class="home-button" href="{% url 'home' %}">Accueil</a>
+            {% if user.is_authenticated %}
+                <a class="logout"href="{% url 'logout' %}">Déconnexion</a>
+            {% endif %}
+        </div>
+    </header>
+    <div class="french-flag">
+        <div class="blue"></div>
+        <div class = "white"></div>
+        <div class = "red"></div>
+    </div>
+    {% block content %}
+    <!-- Le contenu des autres modèles sera inséré ici -->
+    {% endblock %}
+</body>
+</html>

@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+<head>
+    {% load static %}
+    <link rel="stylesheet" type="text/css" href="{% static 'users/styles.css' %}">    <title>Nom du site</title>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <header>
+        <div class="header-images">
+            <div class="header-section">
+                <img class="dhreamcup"src="{% static 'users/images/drheamcup.png' %}" alt="Image 1">
+            </div>
+            <div class="header-section">
+                <img class="ffv"src="{% static 'users/images/ffv.png' %}" alt="Image 2">
+            </div>
+        </div>
+        <div class="header-title">
+            <h1>DRHEAM CUP</h1>
+        </div>
+    </header>
+    {% block content %}
+    <!-- Le contenu des autres modèles sera inséré ici -->
+    {% endblock %}
+</body>
+</html>

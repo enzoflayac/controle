@@ -1,0 +1,15 @@
+{% extends "base_generic.html" %}
+{% block content %}
+<div class="user-list">
+    <div class="user_title">
+        <h2>Liste des utilisateurs</h2>
+    </div>
+    <ul class='users_links'>
+        {% for user in users %}
+        <li>
+            <a href="{% url 'upload_page' user.id %}">{{ user.username }}</a>
+        </li>
+        {% endfor %}
+    </ul>
+</div>
+{% endblock %}

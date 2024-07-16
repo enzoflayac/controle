@@ -1,0 +1,28 @@
+{% extends "base_generic.html" %}
+{% load static %}
+{% block content %}
+<div class="upload-page">
+    <h1>Fichiers de {{ user.username }}</h1>
+    <a class="excel"href="/media/donnees_extraites.xlsx" download="donnees_extraites.xlsx">Télécharger donnees_extraites.xlsx</a>
+    <form method="post" enctype="multipart/form-data" class="upload-form">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <button type="submit">Envoyer</button>
+    </form>
+    <ul>
+        {% if files %}
+            {% for file in files %}
+                <li>
+                    <a href="{% url 'download' file_path=file.path %}" class="file">{{ file.name }}</a>
+                    <form method="post" action="{% url 'delete_file' user_id=user.id file_name=file.name %}" class="delete">
+                        {% csrf_token %}
+                        <button type="submit" class="fa-solid fa-trash"></button>
+                    </form>
+                </li>
+            {% endfor %}
+        {% else %}
+            <li>Aucun fichier trouvé.</li>
+        {% endif %}
+    </ul>
+</div>
+{% endblock %}
