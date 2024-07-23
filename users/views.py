@@ -209,6 +209,8 @@ def extraire_donnees_pdf():
     chemin_base = settings.MEDIA_ROOT
     # Parcourir tous les fichiers de tous les utilisateurs
     for dossier, sous_dossiers, fichiers in os.walk(chemin_base):
+        if dossier == chemin_base:
+            continue
         for nom_fichier in fichiers:
             chemin_fichier = os.path.join(dossier, nom_fichier)
             if chemin_fichier.endswith('.pdf'):
@@ -220,31 +222,34 @@ def extraire_donnees_pdf():
                         fields = reader.get_fields()
                         # Extraire les données nécessaires
                         donnees = {
-                            'Nom du bateau': fields.get('Nom du bateau').value if fields.get('Nom du bateau') else 'Inconnu',
-                            'Nom de baptême': fields.get('Nom de baptême').value if fields.get('Nom de baptême') else 'Inconnu',
-                            'Soussigné': fields.get('Soussigné').value if fields.get('Soussigné') else 'Inconnu',
-                            'Contacts téléphoniques': fields.get('Contacts téléphoniques').value if fields.get('Contacts téléphoniques') else 'Inconnu',
-                            'MMSI': fields.get('MMSI').value if fields.get('MMSI') else 'Inconnu',
-                            'Téléphone satellitaire': fields.get('Téléphone satellitaire').value if fields.get('Téléphone satellitaire') else 'Inconnu',
-                            'EPIRB': fields.get('EPIRB').value if fields.get('EPIRB') else 'Inconnu',
-                            'NomPrénom1': fields.get('NomPrénom1').value if fields.get('NomPrénom1') else 'Inconnu',
-                            'Balise AIS1': fields.get('Balise AIS1').value if fields.get('Balise AIS1') else 'Inconnu',
-                            'Balise PLB1': fields.get('Balise PLB1').value if fields.get('Balise PLB1') else 'Inconnu',
-                            'NomPrénom2': fields.get('NomPrénom2').value if fields.get('NomPrénom2') else 'Inconnu',
-                            'Balise AIS2': fields.get('Balise AIS2').value if fields.get('Balise AIS2') else 'Inconnu',
-                            'Balise PLB2': fields.get('Balise PLB2').value if fields.get('Balise PLB2') else 'Inconnu',
-                            'NomPrénom3': fields.get('NomPrénom3').value if fields.get('NomPrénom3') else 'Inconnu',
-                            'Balise AIS3': fields.get('Balise AIS3').value if fields.get('Balise AIS3') else 'Inconnu',
-                            'Balise PLB3': fields.get('Balise PLB3').value if fields.get('Balise PLB3') else 'Inconnu',
-                            'NomPrénom4': fields.get('NomPrénom4').value if fields.get('NomPrénom4') else 'Inconnu',
-                            'Balise AIS4': fields.get('Balise AIS4').value if fields.get('Balise AIS4') else 'Inconnu',
-                            'Balise PLB4': fields.get('Balise PLB4').value if fields.get('Balise PLB4') else 'Inconnu',
-                            'NomPrénom5': fields.get('NomPrénom5').value if fields.get('NomPrénom5') else 'Inconnu',
-                            'Balise AIS5': fields.get('Balise AIS5').value if fields.get('Balise AIS5') else 'Inconnu',
-                            'Balise PLB5': fields.get('Balise PLB5').value if fields.get('Balise PLB5') else 'Inconnu',
-                            'NomPrénom6': fields.get('NomPrénom6').value if fields.get('NomPrénom6') else 'Inconnu',
-                            'Balise AIS6': fields.get('Balise AIS6').value if fields.get('Balise AIS6') else 'Inconnu',
-                            'Balise PLB6': fields.get('Balise PLB6').value if fields.get('Balise PLB6') else 'Inconnu',
+                            'Numéro de course': fields.get('1').value if fields.get('1') else 'Inconnu',
+                            'Nom de course': fields.get('2').value if fields.get('2') else 'Inconnu',
+                            'Nom de baptême': fields.get('3').value if fields.get('3') else 'Inconnu',
+                            'Skipper': fields.get('4').value if fields.get('4') else 'Inconnu',
+                            'Responsable du bateau pour les contrôles': fields.get('5').value if fields.get('5') else 'Inconnu',
+                            'Téléphone': fields.get('6').value if fields.get('6') else 'Inconnu',
+                            'MMSI': fields.get('7').value if fields.get('7') else 'Inconnu',
+                            'N° de série': fields.get('8').value if fields.get('8') else 'Inconnu',
+                            'prochaine révision': fields.get('9').value if fields.get('9') else 'Inconnu',
+                            'Marque gilet skipper': fields.get('10').value if fields.get('10') else 'Inconnu',
+                            'Couleur gilet skipper': fields.get('11').value if fields.get('11') else 'Inconnu',
+                            'Nom inscrit sur le gilet skipper': fields.get('12').value if fields.get('12') else 'Inconnu',
+                            'Marque gilet Spare': fields.get('13').value if fields.get('13') else 'Inconnu',
+                            'Couleur gilet Spare': fields.get('14').value if fields.get('14') else 'Inconnu',
+                            'Nom inscrit sur le gilet Spare': fields.get('15').value if fields.get('15') else 'Inconnu',
+                            'Balise Personelle AIS': fields.get('16').value if fields.get('16') else 'Inconnu',
+                            '2ème Balise Personelle AIS': fields.get('17').value if fields.get('17') else 'Inconnu',
+                            'PLB': fields.get('18').value if fields.get('18') else 'Inconnu',
+                            '2ème PLB': fields.get('19').value if fields.get('19') else 'Inconnu',
+                            'Numéro combinaison de survie': fields.get('20').value if fields.get('20') else 'Inconnu',
+                            'Couleur combinaison de survie': fields.get('21').value if fields.get('21') else 'Inconnu',
+                            'Marque combinaison de survie': fields.get('22').value if fields.get('22') else 'Inconnu',
+                            'Indicatif VHF': fields.get('23').value if fields.get('23') else 'Inconnu',
+                            'Numéro Iridium': fields.get('24').value if fields.get('24') else 'Inconnu',
+                            'N° EPIRB': fields.get('25').value if fields.get('25') else 'Inconnu',
+                            'Date révision EPIRB': fields.get('26').value if fields.get('26') else 'Inconnu',
+                            'Soussigné': fields.get('27').value if fields.get('27') else 'Inconnu',
+                            'Date': fields.get('28').value if fields.get('28') else 'Inconnu',
                         }
                         donnees_extraites.append(donnees)
                 except Exception as e:

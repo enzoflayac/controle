@@ -45,7 +45,6 @@ header {
 
 .dhreamcup {
     height: 5vh;
-
 }
 
 .links {
@@ -78,6 +77,30 @@ header h1 {
     font-size: 4vmin;
     color: #02519f;
     margin: 0;
+}
+
+.french-flag {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.blue{
+    height: vh;
+    width: 33.3333333%;
+    background-color: blue;
+}
+
+.white{
+    height: 0.5vh;
+    width: 33.3333333%;
+    background-color: white;
+}
+
+.red{
+    height: 0.5vh;
+    width: 33.3333333%;
+    background-color: red;
 }
 
 
@@ -259,10 +282,21 @@ header h1 {
     border: 1px solid #353535;
 }
 
+.excel {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-decoration: none;
+    height: 2vh;
+    color: green;
+    font-size: 16px;
+    margin-bottom: 10px;
+}
+
 .upload-page h1 {
     color: white;
     text-align: center;
-    padding-top: 20px;
+    padding-top: 10px;
 }
 
 
@@ -290,6 +324,7 @@ header h1 {
 
 .file{
     color: white;
+    text-decoration: none;
 }
 
 .delete {
@@ -317,70 +352,58 @@ header h1 {
 
 /* Page des utilisateurs */
 
-
 .user-list {
     display: flex;
     flex-direction: column;
     align-items: stretch;
     margin: 20px;
     margin-left: 40px;
-    width: 50vh;
+    width: 60vh;
+    background-color: #02519f;
     border: 1px solid #353535;
-}
-
-
-
-.user_title {
-    background-color: #417690;
-    width: 50vh;
-    height: 3vh;
+    margin-top: 60px;
 }
 
 .user-list h2 {
-    display: flex;
-    align-items: center;
-    justify-content: start;
-    margin: 0;
-    color: white;
     font-size: 14px;
-    font-weight: lighter;
-    height: 3vh;
+    color: white;
     text-transform: uppercase;
     letter-spacing: 2px;
     padding-left: 10px;
+    margin: 0;
+    height: 30px;
+    display: flex;
+    justify-content: start;
+    align-items: center;
 }
 
 .user-list ul {
-    width: 50vh;
+    list-style-type: none;
     padding: 0;
     margin: 0;
-    list-style-type: none;
 }
 
 .user-list li {
-    display: flex;
-    align-items: center;
-    justify-content: start;
-    height: 3vh;
+    margin: 0;
+    list-style: none;
 }
 
+.user-list li a {
+    color: #015fbd;
+    text-decoration: none;
+    padding-left: 10px;
+    font-size: 14px;
+    font-weight: bold;
+    font-family: "Poppins", sans-serif;
+    display: flex;
+    justify-content: start;
+    align-items: center;
+    height: 30px;
+}
 .user-list li:nth-child(odd) {
     background-color: #121212; /* Couleur pour les éléments impairs */
 }
 
 .user-list li:nth-child(even) {
     background-color: #212121; /* Couleur pour les éléments pairs */
-}
-
-
-
-.user-list a {
-    color: #81d4fa;
-    text-decoration: none;
-    padding-left: 10px;
-    font-size: 14px;
-}
-
-.user-list a:hover {
-    color: #4ac1f7;
 }

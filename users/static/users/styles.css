@@ -45,7 +45,6 @@ header {
 
 .dhreamcup {
     height: 5vh;
-
 }
 
 .links {
@@ -75,7 +74,7 @@ header {
 }
 
 header h1 {
-    font-size: 4vmin;
+    font-size: 3.5vmin;
     color: #02519f;
     margin: 0;
 }
@@ -288,16 +287,40 @@ header h1 {
     justify-content: center;
     align-items: center;
     text-decoration: none;
-    height: 2vh;
-    color: green;
+    width: 20vw;
+    border-radius: 10px;
+    font-family: "Poppins", sans-serif;
+    color: white;
+    background-color: green;
+    height: 3vh;
     font-size: 16px;
+    margin-bottom: 10px;
+    margin: auto;
+}
+
+.pdf {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-decoration: none;
+    width: 20vw;
+    border-radius: 10px;
+    font-family: "Poppins", sans-serif;
+    color: white;
+    background-color: red;
+    height: 3vh;
+    font-size: 16px;
+    margin: auto;
+    margin-top: 10px;
     margin-bottom: 10px;
 }
 
 .upload-page h1 {
     color: white;
+    font-family: "Poppins", sans-serif;
     text-align: center;
     padding-top: 10px;
+    margin: 0;
 }
 
 
