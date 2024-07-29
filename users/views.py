@@ -3,6 +3,8 @@ import datetime
 import os
 import PyPDF2
 import pandas as pd
+from openpyxl import load_workbook
+from openpyxl.styles import PatternFill
 import hashlib
 from os.path import basename
 from django.conf import settings
@@ -251,9 +253,22 @@ def extraire_donnees_pdf():
                             'Soussigné': fields.get('27').value if fields.get('27') else 'Inconnu',
                             'Date': fields.get('28').value if fields.get('28') else 'Inconnu',
                         }
+                        
+                        
+                        def verifier_cases(donnees):
+                            for key, value in donnees.items():
+                                if "Case" in key:
+                                    if value.value is None or value.value != "/Oui":
+                                        return False
+                            return True
+                        result = verifier_cases(fields)
+                        print(result)
+                        donnees['Controle'] = 'OK' if result else 'Non OK'
                         donnees_extraites.append(donnees)
+                            
                 except Exception as e:
                     print(f"Erreur lors de la lecture du fichier {chemin_fichier}: {e}")
+                
 
     # Créer un DataFrame avec les données extraites
     df = pd.DataFrame(donnees_extraites)
@@ -263,7 +278,29 @@ def extraire_donnees_pdf():
     chemin_complet = os.path.join(settings.MEDIA_ROOT, nom_fichier_excel)
     df.to_excel(chemin_complet, index=False)
 
+    colorer_lignes_excel(chemin_complet)
+
     return chemin_complet
+
+def colorer_lignes_excel(chemin_fichier_excel):
+    wb = load_workbook(chemin_fichier_excel)
+    ws = wb.active
+
+    # Définir les couleurs
+    fill_vert = PatternFill(start_color="CFFFB3", end_color="CFFFB3", fill_type="solid")
+    fill_rouge = PatternFill(start_color="FF4B3E", end_color="FF4B3E", fill_type="solid")
+
+    # Appliquer les couleurs aux lignes
+    for row in ws.iter_rows(min_row=2, max_row=ws.max_row, min_col=1, max_col=ws.max_column):
+        couleur = row[-1].value  # La colonne 'Couleur' est la dernière colonne
+        fill = fill_vert if couleur == 'OK' else fill_rouge
+        for cell in row:
+            cell.fill = fill
+
+    wb.save(chemin_fichier_excel)
+
+
+
 
 @login_required
 def download(request, file_path):
